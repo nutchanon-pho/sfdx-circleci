@@ -47,13 +47,12 @@ jobs:
           command: |
             echo 'Running tests'
             sfdx force:auth:jwt:grant --clientid $HUB_CONSUMER_KEY --jwtkeyfile assets/server.key --username $HUB_SFDX_USER --setdefaultdevhubusername -a hub
-            sfdx force:org:create -s -f ~/ci_app/config/project-scratch-def.json -a circle_build_$CIRCLE_BUILD_NUM --wait 6
-            sfdx force:source:push -u circle_build_$CIRCLE_BUILD_NUM
+            sfdx force:source:deploy -x ./manifest/package.xml
       - run:
           name: Run Apex Tests
           command: |
             mkdir -p ~/junit
-            sfdx force:apex:test:run --wait 10 --resultformat junit --codecoverage --testlevel RunLocalTests -d ~/junit
+            sfdx force:apex:test:run --wait -1 --resultformat junit --codecoverage --testlevel RunLocalTests -d ~/junit
           environment:
             SFDX_IMPROVED_CODE_COVERAGE: true
       - store_artifacts:
@@ -64,10 +63,6 @@ jobs:
       - codecov/upload:
           file: apex-test-results/test-result.xml
           token: 1f5351f6-b609-4927-b768-10ba47c053d0
-      - run:
-          name: Delete Useless Scratch Org
-          command: |
-            sfdx force:org:delete -u circle_build_$CIRCLE_BUILD_NUM -p
 
 ### Uncomment the following if performing deployments
 #deployment:
