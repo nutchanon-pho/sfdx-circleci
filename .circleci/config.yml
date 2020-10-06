@@ -46,8 +46,8 @@ jobs:
           name: Setup Org
           command: |
             echo 'Running tests'
-            sfdx force:auth:jwt:grant --clientid $HUB_CONSUMER_KEY --jwtkeyfile assets/server.key --username $HUB_SFDX_USER --setdefaultdevhubusername -a hub
-            sfdx force:source:deploy -x ./manifest/package.xml
+            sfdx force:auth:jwt:grant --clientid $HUB_CONSUMER_KEY --jwtkeyfile assets/server.key --username $HUB_SFDX_USER --setdefaultdevhubusername -a target
+            sfdx force:source:deploy -u target -x ./manifest/package.xml
       - run:
           name: Run Apex Tests
           command: |
