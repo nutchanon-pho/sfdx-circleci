@@ -62,7 +62,7 @@ jobs:
           path: ~/junit
       - codecov/upload:
           file: ~/junit/test-result.xml
-          token: 1f5351f6-b609-4927-b768-10ba47c053d0
+          token: 82a54784-4445-4c97-93e8-5fdad31c1eeb
 
 ### Uncomment the following if performing deployments
 #deployment:
