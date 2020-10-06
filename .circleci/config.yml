@@ -54,6 +54,9 @@ jobs:
           command: |
             mkdir -p ~/junit
             sfdx force:apex:test:run -c -d ~/junit -r junit --wait 6
+      - store_artifacts:
+          destination: apex-test-results
+          path: ~/junit
       - store_test_results:
           path: ~/junit
       - run:
