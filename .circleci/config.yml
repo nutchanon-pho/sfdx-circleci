@@ -63,7 +63,6 @@ jobs:
       - store_test_results:
           path: ~/junit
       - codecov/upload:
-          file: './coverage/clover.xml'
           token: 1f5351f6-b609-4927-b768-10ba47c053d0
       - run:
           name: Delete Useless Scratch Org
