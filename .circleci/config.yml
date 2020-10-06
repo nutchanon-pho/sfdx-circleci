@@ -1,4 +1,4 @@
-version: 2
+version: 2.1
 
 general:
 # Uncomment the following to specify only a specific branch
@@ -6,7 +6,8 @@ general:
 #     only:
 #       - dev # specific branch
 #       - /dev-.*/ # or regexes
-
+orbs:
+  codecov: codecov/codecov@1.0.2
 jobs:
   build:
     machine: true
@@ -54,11 +55,16 @@ jobs:
           command: |
             mkdir -p ~/junit
             sfdx force:apex:test:run -c -d ~/junit -r junit --wait 6
+          environment:
+            SFDX_IMPROVED_CODE_COVERAGE: true
       - store_artifacts:
           destination: apex-test-results
           path: ~/junit
       - store_test_results:
           path: ~/junit
+      - codecov/upload:
+          file: './coverage/clover.xml'
+          token: 1f5351f6-b609-4927-b768-10ba47c053d0
       - run:
           name: Delete Useless Scratch Org
           command: |
