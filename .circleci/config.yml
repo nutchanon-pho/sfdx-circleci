@@ -52,7 +52,7 @@ jobs:
           name: Run Apex Tests
           command: |
             mkdir -p ~/junit
-            sfdx force:apex:test:run --wait -1 --resultformat junit --codecoverage --testlevel RunLocalTests -d ~/junit
+            sfdx force:apex:test:run --wait 33 --resultformat junit --codecoverage --testlevel RunLocalTests -d ~/junit
           environment:
             SFDX_IMPROVED_CODE_COVERAGE: true
       - store_artifacts:
