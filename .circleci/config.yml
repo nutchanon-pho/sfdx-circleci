@@ -51,17 +51,17 @@ jobs:
       - run:
           name: Run Apex Tests
           command: |
-            mkdir -p ./junit
-            sfdx force:apex:test:run -u target --wait 33 --resultformat junit --codecoverage --testlevel RunLocalTests -d ./junit
+            mkdir -p ./reports/junit/
+            sfdx force:apex:test:run -u target --wait 33 --resultformat junit --codecoverage --testlevel RunLocalTests -d ./reports/junit/
           environment:
             SFDX_IMPROVED_CODE_COVERAGE: true
       - store_artifacts:
           destination: apex-test-results
-          path: ./junit
+          path: ./reports/junit/
       - store_test_results:
-          path: ./junit
+          path: ./reports/junit/
       - codecov/upload:
-          file: './junit/test-result.xml'
+          file: coverage/coverage-final.json
           token: 82a54784-4445-4c97-93e8-5fdad31c1eeb
 
 ### Uncomment the following if performing deployments
