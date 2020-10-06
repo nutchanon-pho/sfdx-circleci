@@ -61,7 +61,7 @@ jobs:
       - store_test_results:
           path: ~/junit
       - codecov/upload:
-          file: ~/junit/test-result.xml
+          file: ~/junit/*
           token: 82a54784-4445-4c97-93e8-5fdad31c1eeb
 
 ### Uncomment the following if performing deployments
