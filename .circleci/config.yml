@@ -47,7 +47,6 @@ jobs:
           command: |
             echo 'Running tests'
             sfdx force:auth:jwt:grant --clientid $HUB_CONSUMER_KEY --jwtkeyfile assets/server.key --username $HUB_SFDX_USER --setdefaultdevhubusername -a hub
-            sfdx force --help
             sfdx force:org:create -s -f ~/ci_app/config/project-scratch-def.json -a circle_build_$CIRCLE_BUILD_NUM --wait 6
             sfdx force:source:push -u circle_build_$CIRCLE_BUILD_NUM
       - run:
@@ -63,7 +62,7 @@ jobs:
       - store_test_results:
           path: ~/junit
       - codecov/upload:
-          file: ./coverage/clover.xml
+          file: apex-test-results/test-result.xml
           token: 1f5351f6-b609-4927-b768-10ba47c053d0
       - run:
           name: Delete Useless Scratch Org
