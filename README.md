@@ -1,6 +1,6 @@
 # sfdx-circleci 
 [![CircleCI](https://circleci.com/gh/nutchanon-pho/sfdx-circleci.svg?style=svg)](https://circleci.com/gh/nutchanon-pho/sfdx-circleci)
-[![codecov](https://codecov.io/gh/nutchanon-pho/sfdx-circleci/branch/master/graph/badge.svg?token=9K3RVTUMQ8)](undefined)
+[![codecov](https://codecov.io/gh/nutchanon-pho/sfdx-circleci/branch/master/graph/badge.svg?token=9K3RVTUMQ8)](https://codecov.io/gh/nutchanon-pho/sfdx-circleci)
 
 Coming Soon --- For a fully guided walk through of setting up and configuring this sample, see the [Continuous Integration Using Salesforce DX](https://trailhead.salesforce.com/modules/sfdx_travis_ci) Trailhead module.
 
