@@ -14,6 +14,6 @@ public with sharing class myclass {
 	}
 
 	public String someMethod() {
-		return 'something';
+		return 'something else';
 	}
 }
